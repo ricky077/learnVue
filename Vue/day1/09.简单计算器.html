@@ -1,0 +1,41 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Title</title>
+</head>
+<body>
+<script src="https://cdn.jsdelivr.net/npm/vue/dist/vue.js"></script>
+<div id="app">
+    <h1>简单计算器</h1>
+    <div>
+        数值A:<input type="text"  v-model="a">
+    </div>
+    <div>
+        数值B:<input type="text" @keyup.enter="handle0" v-model="b">
+    </div>
+    <div>
+        <button @click="handle0">结果</button>
+    </div>
+    <div>
+        <span>计算结果：</span>
+        <span v-text="result"></span>
+    </div>
+</div>
+<script type="text/javascript">
+    var app = new Vue({
+        el: '#app',
+        data: {
+            a:'',
+            b:'',
+            result:''
+        },
+        methods: {
+            handle0: function (event) {
+                this.result = parseInt(this.a) + parseInt(this.b);
+            }
+        }
+    })
+</script>
+</body>
+</html>
