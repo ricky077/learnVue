@@ -1,0 +1,69 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>table</title>
+</head>
+<body>
+<script src="https://cdn.jsdelivr.net/npm/vue/dist/vue.js"></script>
+<!-- 引入样式 -->
+<link rel="stylesheet" href="https://unpkg.com/element-ui/lib/theme-chalk/index.css">
+<!-- 引入组件库 -->
+<script src="https://unpkg.com/element-ui/lib/index.js"></script>
+<div id="app">
+    <el-table :data="tableData" border  style="width: 100%" :row-class-name="tableRowClassName">
+        <el-table-column prop="date" label="日期" width="180">
+        </el-table-column>
+        <el-table-column prop="name" label="姓名" width="180">
+        </el-table-column>
+        <el-table-column prop="address" label="地址">
+        </el-table-column>
+    </el-table>
+</div>
+
+<style>
+    .el-table .warning-row {
+        background: oldlace;
+    }
+
+    .el-table .success-row {
+        background: #f0f9eb;
+    }
+</style>
+
+<script type="text/javascript">
+    var app = new Vue({
+        el: '#app',
+        methods: {
+            tableRowClassName({row, rowIndex}) {
+                if (rowIndex === 1) {
+                    return 'warning-row';
+                } else if (rowIndex === 3) {
+                    return 'success-row';
+                }
+                return '';
+            }
+        },
+        data: {
+            tableData: [{
+                date: '2021-01-01',
+                name: '张三',
+                address: '四川成都'
+            }, {
+                date: '2021-01-01',
+                name: '张三',
+                address: '四川成都'
+            }, {
+                date: '2021-01-01',
+                name: '张三',
+                address: '四川成都'
+            }, {
+                date: '2021-01-01',
+                name: '张三',
+                address: '四川成都'
+            }]
+        }
+    })
+</script>
+</body>
+</html>

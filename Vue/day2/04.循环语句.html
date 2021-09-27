@@ -1,0 +1,37 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>循环语句</title>
+</head>
+<body>
+<script src="https://cdn.jsdelivr.net/npm/vue/dist/vue.js"></script>
+<!-- 引入样式 -->
+<link rel="stylesheet" href="https://unpkg.com/element-ui/lib/theme-chalk/index.css">
+<!-- 引入组件库 -->
+<script src="https://unpkg.com/element-ui/lib/index.js"></script>
+<div id="app">
+    <h1 v-text="num"></h1>
+    <el-row>
+        <el-col v-for="(todo,index) in todos" :span="6"><el-tag style="align-self: center">{{index}} : {{ todo.text }}</el-tag></el-col>
+    </el-row>
+</div>
+<script type="text/javascript">
+    var app = new Vue({
+        el: '#app',
+        data: {
+            num : 'Hello Vue 循环',
+            todos : [{
+                text: '学习Java'
+            },{
+                text: '学习Vue'
+            },{
+                text: '学习Spring Boot'
+            },{
+                text: '学习Spring'
+            }]
+        }
+    })
+</script>
+</body>
+</html>

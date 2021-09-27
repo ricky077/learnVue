@@ -2,7 +2,7 @@
 <html lang="en">
 <head>
     <meta charset="UTF-8">
-    <title>Title</title>
+    <title>条件语句</title>
 </head>
 <body>
 <script src="https://cdn.jsdelivr.net/npm/vue/dist/vue.js"></script>
@@ -12,16 +12,32 @@
 <script src="https://unpkg.com/element-ui/lib/index.js"></script>
 <div id="app">
     <div v-text="num"></div>
-    <el-dialog :visible.sync="visible" title="Hello world">
-        <h1>Hello Element</h1>
-        <p>Try Element</p>
-    </el-dialog>
+    <div class="style: 18px large">
+        <el-button class="el-icon-plus" @click="handle">计算数值</el-button>
+        <el-button v-if="obj.add" type="primary" class="el-icon-plus">新增</el-button>
+        <el-button v-if="obj.update" type="success" class="el-icon-edit">修改</el-button>
+        <el-button type="danger" class="el-icon-delete">删除</el-button>
+    </div>
 </div>
 <script type="text/javascript">
     var app = new Vue({
         el: '#app',
         data: {
-            num : 'Hello Vue'
+            num : 'Hello Vue',
+            obj : {
+                add: true,
+                update: false,
+                delete: 'true'
+            }
+        },
+        methods: {
+            handle:function () {
+                if (this.num === 'Hello Vue') {
+                    this.num = 1024;
+                } else {
+                    this.num++;
+                }
+            }
         }
     })
 // v-model的原理就是属性绑定+事件绑定

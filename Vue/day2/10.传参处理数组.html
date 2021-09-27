@@ -1,0 +1,49 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>数组测试</title>
+</head>
+<body>
+<script src="https://cdn.jsdelivr.net/npm/vue/dist/vue.js"></script>
+<script src="https://cdn.jsdelivr.net/npm/axios@0.12.0/dist/axios.min.js"></script>
+<script src="https://cdn.jsdelivr.net/npm/lodash@4.13.1/lodash.min.js"></script>
+<!-- 引入样式 -->
+<link rel="stylesheet" href="https://unpkg.com/element-ui/lib/theme-chalk/index.css">
+<!-- 引入组件库 -->
+<script src="https://unpkg.com/element-ui/lib/index.js"></script>
+<div id="app">
+    <p>{{ myArray}}</p>
+    <ul >
+        <li v-for="n in evenNumbers">{{ n }}</li>
+    </ul>
+    <button @click='addValue1'>下标法添加</button>
+    <button @click='addValue2'>push法</button>
+    <!-- 如果你点了第一个，再点第二个，第一个的添加会在第二个的时候再成功显示 -->
+</div>
+<script type="text/javascript">
+    var app = new Vue({
+        el: '#app',
+        data: {
+            myArray: [1,2,3]
+        },
+        methods: {
+            addValue1: function(){
+                this.myArray[2]=200
+            },
+            addValue2: function(){
+                this.myArray.push(800);
+            }
+        },
+        computed: {
+            evenNumbers: function () {
+                return this.myArray.filter(function (number) {
+                    return number % 2 === 0
+                })
+            }
+        }
+    })
+// v-model的原理就是属性绑定+事件绑定
+</script>
+</body>
+</html>
