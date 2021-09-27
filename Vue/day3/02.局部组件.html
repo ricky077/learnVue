@@ -1,0 +1,42 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>组件入门</title>
+</head>
+<body>
+<script src="https://cdn.jsdelivr.net/npm/vue/dist/vue.js"></script>
+<script src="https://cdn.jsdelivr.net/npm/axios@0.12.0/dist/axios.min.js"></script>
+<script src="https://cdn.jsdelivr.net/npm/lodash@4.13.1/lodash.min.js"></script>
+<!-- 引入样式 -->
+<link rel="stylesheet" href="https://unpkg.com/element-ui/lib/theme-chalk/index.css">
+<!-- 引入组件库 -->
+<script src="https://unpkg.com/element-ui/lib/index.js"></script>
+<div id="app">
+    <my-element></my-element>
+    <my-element></my-element>
+    <my-element></my-element>
+    <my-element2></my-element2>
+</div>
+<script type="text/javascript">
+    //定义一个组件，template的值是组件的内容
+    var componentA = {
+        template: '<div><span>局部组件</span></div>'
+    };
+    var componentB = {
+        components : {
+            'my-element' : componentA
+        },
+        template: '<div><span>套娃ComponentA:</span><my-element></my-element></div>'
+    };
+    // 实例化是必须的，要把使用组件的区域交给vue管理
+    var app = new Vue({
+        el: '#app',
+        components : {
+            'my-element' : componentA,
+            'my-element2' : componentB
+        }
+    })
+</script>
+</body>
+</html>
