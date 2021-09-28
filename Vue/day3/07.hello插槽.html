@@ -1,0 +1,36 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>组件传值</title>
+</head>
+<body>
+<script src="https://cdn.jsdelivr.net/npm/vue/dist/vue.js"></script>
+<script src="https://cdn.jsdelivr.net/npm/axios@0.12.0/dist/axios.min.js"></script>
+<script src="https://cdn.jsdelivr.net/npm/lodash@4.13.1/lodash.min.js"></script>
+<!-- 引入样式 -->
+<link rel="stylesheet" href="https://unpkg.com/element-ui/lib/theme-chalk/index.css">
+<!-- 引入组件库 -->
+<script src="https://unpkg.com/element-ui/lib/index.js"></script>
+<div id="app">
+    <child>LiLei</child>
+</div>
+<script type="text/javascript">
+    Vue.component('child',{
+        template:`
+                <div>
+                Hello,<slot></slot>
+                </div>
+        `
+    });
+    var vm = new Vue({
+        el: '#app',
+        methods: {
+            myFunction: function() {
+                console.log('haha')
+            }
+        }
+    })
+</script>
+</body>
+</html>
